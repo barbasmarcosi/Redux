@@ -1,31 +1,41 @@
-const App = () => {
-  const putTable = () => [
-    <tr>
-      <td>Rodolfo</td>
-      <td>rodolfo@mail.com</td>
-      <td>rodolfo.com</td>
-    </tr>,
-    <tr>
-      <td>Marcos</td>
-      <td>marcos@mail.com</td>
-      <td>marcos.com</td>
-    </tr>,
-  ];
+import { Component } from "react";
 
-  return (
-    <div className="App">
-      <table className="Table">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Enlace</th>
-          </tr>
-        </thead>
-        <tbody>{putTable()}</tbody>
-      </table>
-    </div>
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      users: [
+        { name: "rodolfo", email: "rodolfo@mail.com", website: "rodolfo.com" },
+        { name: "marcos", email: "marcos@mail.com", website: "marcos.com" },
+      ],
+    };
+  }
+  putTable = () => (
+    this.state.users.map((user) => (
+      <tr>
+        <td>{user.name}</td>
+        <td>{user.email}</td>
+        <td>{user.website}</td>
+      </tr>
+    ))
   );
-};
+
+  render() {
+    return (
+      <div className="App">
+        <table className="Table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Web Site</th>
+            </tr>
+          </thead>
+          <tbody>{this.putTable()}</tbody>
+        </table>
+      </div>
+    );
+  }
+}
 
 export default App;
