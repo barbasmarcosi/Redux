@@ -1,13 +1,49 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+#root {
+  --main-color: #4994f7;
+  --shadows: darkgray;
+  width: 100%;
+  height: 100%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  margin: 100px;
+  color: azure;
+}
+
+.Table {
+  width: 100%;
+  text-align: left;
+  font-size: 24px;
+}
+
+.Table tr {
+  border-radius: 50px
+}
+
+.Table th {
+  background-color: var(--main-color);
+  box-shadow: 3px 3px 3px var(--shadows);
+  padding: 4px;  
+}
+
+.Table th:first-child {
+  border-radius: 8px 0 0;
+}
+
+.Table th:last-child {
+  border-radius: 0 8px 0 0;
+}
+
+.Table td {
+  background-color: #739bd8;
+  box-shadow: 3px 3px 3px var(--shadows);
+  padding: 4px;
+}
+
+.Table tr:last-child td:first-child {
+  border-radius: 0 0 0 8px;
+}
+
+.Table tr:last-child td:last-child {
+  border-radius: 0 0 8px 0;
 }
