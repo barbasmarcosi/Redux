@@ -1,29 +1,36 @@
 #root {
-  --main-color: #4994f7;
-  --shadows: darkgray;
-  width: 100%;
-  height: 100%;
+  --secondary: #212738;
+  --details: #edf2ef;
+  --primary: #57c4e5;
+  font-family: "Cabin", sans-serif;
+  background-color: var(--details);
+  color: black;
 }
 
-.App {
-  margin: 100px;
-  color: azure;
+body {
+  background-color: var(--primary);
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.Users {
+  width: 100%;
 }
 
 .Table {
-  width: 100%;
+  margin: 50px 0 0 100px;
+  width: calc(100% - 200px);
   text-align: left;
   font-size: 24px;
-}
-
-.Table tr {
-  border-radius: 50px
+  
 }
 
 .Table th {
-  background-color: var(--main-color);
-  box-shadow: 3px 3px 3px var(--shadows);
-  padding: 4px;  
+  background-color: var(--secondary);
+  color: var(--details);
+  box-shadow: 3px 3px 3px var(--secondary);
+  padding: 4px;
 }
 
 .Table th:first-child {
@@ -35,8 +42,8 @@
 }
 
 .Table td {
-  background-color: #739bd8;
-  box-shadow: 3px 3px 3px var(--shadows);
+  background-color: var(--primary);
+  box-shadow: 3px 3px 3px var(--secondary);
   padding: 4px;
 }
 
@@ -46,4 +53,26 @@
 
 .Table tr:last-child td:last-child {
   border-radius: 0 0 8px 0;
+}
+
+.Menu {
+  background-color: var(--secondary);
+  border-radius: 0 0 16px 16px;
+  box-shadow: 3px 3px 3px var(--primary);
+  padding: 16px;
+}
+
+.Menu a {
+  background: linear-gradient(0deg,var(--primary), var(--secondary)) ;
+  box-shadow: 3px 3px 3px var(--details);
+  padding: 4px 48px 4px 48px;
+  margin-right: 16px;
+  border-radius: 16px;
+  color: black;
+  text-decoration: none;
+  font-size: 36px;
+}
+
+.Menu a:hover {
+  box-shadow: none;
 }
