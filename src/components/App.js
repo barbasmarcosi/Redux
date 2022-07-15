@@ -1,15 +1,22 @@
 import { Component } from "react";
+import axios from "axios";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      users: [
-        { name: "rodolfo", email: "rodolfo@mail.com", website: "rodolfo.com" },
-        { name: "marcos", email: "marcos@mail.com", website: "marcos.com" },
-      ],
+      users: []
     };
   }
+
+  async componentDidMount() {
+    const users = await axios.get('https://jsonplaceholder.typicode.com/users');
+    console.log(users);
+    this.setState({
+      users: users.data
+    })
+  }
+
   putTable = () => (
     this.state.users.map((user) => (
       <tr>
