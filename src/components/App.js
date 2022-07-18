@@ -7,10 +7,12 @@ const App = () => {
     <div className="App">
       <BrowserRouter>
         <Menu />
-        <Routes>
-        <Route exact path='/' element={<Users />} />
-        <Route exact path='/tasks' element={<Tasks />} />
-        </Routes>
+        <div className="Routes">
+          <Routes>
+            <Route exact path="/" element={<Users />} />
+            <Route exact path="/tasks" element={<Tasks />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </div>
   );
