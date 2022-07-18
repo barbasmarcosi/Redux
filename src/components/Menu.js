@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-
+import '../css/menu.css'
 const Menu = (props) => (
     <nav className="Menu">
         <Link to="/">

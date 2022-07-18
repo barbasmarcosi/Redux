@@ -1,5 +1,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
+import Spinner from "../General/Spinner";
+import '../../css/table.css'
 
 import * as usersActions from "../../actions/usersActions";
 
@@ -7,6 +9,27 @@ class Users extends Component {
   componentDidMount() {
     this.props.getAll();
   }
+
+  putContent = () => {
+    if (this.props.loading) {
+      return (
+        <Spinner />
+      );
+    } else {
+      return (
+        <table className="Table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Web Site</th>
+            </tr>
+          </thead>
+          <tbody>{this.putTable()}</tbody>
+        </table>
+      );
+    }
+  };
 
   putTable = () =>
     this.props.users.map((user) => (
@@ -18,20 +41,7 @@ class Users extends Component {
     ));
 
   render() {
-    return (
-      <div className="Users">
-        <table className="Table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Web Site</th>
-            </tr>
-          </thead>
-          <tbody>{this.putTable()}</tbody>
-        </table>
-      </div>
-    );
+    return <div className="Users">{this.putContent()}</div>;
   }
 }
 

@@ -1,0 +1,26 @@
+.Routes {
+  width: 100%;
+  margin: 50px 0 0 100px;
+}
+
+.Menu {
+  background-color: var(--secondary);
+  border-radius: 0 0 16px 16px;
+  box-shadow: 3px 3px 3px var(--primary);
+  padding: 16px;
+}
+
+.Menu a {
+  background: linear-gradient(0deg, var(--primary), var(--secondary));
+  box-shadow: 3px 3px 3px var(--details);
+  padding: 4px 48px 4px 48px;
+  margin-right: 16px;
+  border-radius: 16px;
+  color: black;
+  text-decoration: none;
+  font-size: 36px;
+}
+
+.Menu a:hover {
+  box-shadow: none;
+}

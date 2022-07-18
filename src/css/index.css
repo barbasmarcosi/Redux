@@ -1,0 +1,15 @@
+#root {
+  --secondary: #212738;
+  --details: #edf2ef;
+  --primary: #57c4e5;
+  font-family: "Cabin", sans-serif;
+  background-color: var(--details);
+  color: black;
+}
+
+body {
+  background-color: var(--primary);
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
