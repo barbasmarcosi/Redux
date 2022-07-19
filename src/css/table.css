@@ -1,5 +1,7 @@
 .Table {
   width: calc(100% - 200px);
+  margin-left: 96px;
+  margin-top: 48px;
   text-align: left;
   font-size: 24px;
 }

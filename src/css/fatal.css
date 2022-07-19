@@ -1,0 +1,29 @@
+.Fatal {
+  width: 95%;
+  text-align: center;
+}
+
+.FatalMessage {
+    font-size: 36px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #57c4e5;
+}
+
+.FatalLogo {
+  margin: -36px
+}
+
+@media only screen and (min-width: 1480px) {
+  .FatalLogo {
+    width: 1280px;
+    margin-left: calc(50% - 1280px / 2);
+  }
+  .FatalMessage{
+    font-size: 72px;
+  }
+  .FatalLogo {
+    margin: -106px
+  }
+}
+
+
