@@ -1,4 +1,9 @@
-import * as types from "../types/usersTypes";
+import {
+  ERROR_USERS,
+  LOADING_USERS,
+  GET_ALL_USERS,
+  GET_USERS_BY_KEY,
+} from "../types/usersTypes";
 
 const INITIAL_STATE = {
   users: [],
@@ -8,13 +13,16 @@ const INITIAL_STATE = {
 
 const usersReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case types.GET_ALL:
-      return { ...state, users: action.payload, loading: false };
+    case GET_ALL_USERS:
+      return { ...state, users: action.payload, loading: false, error: "" };
 
-    case types.LOADING:
+    case GET_USERS_BY_KEY:
+      return { ...state, users: action.payload, loading: false, error: "" };
+
+    case LOADING_USERS:
       return { ...state, loading: true };
 
-    case types.ERROR:
+    case ERROR_USERS:
       return { ...state, error: action.payload, loading: false };
 
     default:
