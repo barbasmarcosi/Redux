@@ -1,4 +1,38 @@
 .Publications {
-    margin-top: 50px;
-    margin-left: 100px;
+    margin: 50px 100px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.Publications h1 {
+    text-align: center;
+    background-color: var(--secondary);
+    padding: 8px;
+    color: azure;
+    box-shadow: 3px 3px 3px var(--primary);
+    border-radius: 5px;
+}
+
+.Publications h2 {
+    text-align: center;
+    background-color: var(--secondary);
+    padding: 8px;
+    color: azure;
+    box-shadow: 3px 3px 3px var(--primary);
+    border-radius: 5px;
+}
+
+.Publications ul {
+    list-style: upper-alpha;
+    text-align: center;
+    margin: 32px;
+    list-style: none;
+
+    border-radius: 16px;
+}
+
+.Publications li {
+    box-shadow: 3px 3px 3px grey;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 24px;
 }

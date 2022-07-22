@@ -24,6 +24,7 @@ class Users extends Component {
   };
 
   render() {
+    console.log(this.props)
     return <div className="Users">{this.putContent()}</div>;
   }
 }
