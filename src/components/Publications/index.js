@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import Spinner from "../General/Spinner";
 import Fatal from "../General/Fatal";
-import List from "./List";
+import PublicationsList from "./PublicationsList";
 import * as usersActions from "../../actions/usersActions";
 import * as publicationsActions from "../../actions/publicationsActions";
 import "../../css/publication.css";
@@ -14,43 +14,48 @@ function withParams(Component) {
 
 class Publications extends Component {
   async componentDidMount() {
-    const {
-      getAllUsers,
-      getPublicationByUserKey,
-      params: { key },
-    } = this.props;
     if (!this.props.usersReducer.users.length) {
-      await getAllUsers();
+      await this.props.getAllUsers();
     }
-    if (!this.props.usersReducer.users[key].publications) {
-      await getPublicationByUserKey(key);
+    if (
+      !this.props.usersReducer.users[this.props.params.key].publications
+    ) {
+      await this.props.getPublicationByUserKey(this.props.params.key);
     }
   }
+
   putPublications = () => {
-    const {
-      usersReducer,
-      publicationsReducer,
-      params: { key },
-    } = this.props;
     if (
-      publicationsReducer.loading ||
-      usersReducer.loading ||
-      !usersReducer.users.length ||
-      !publicationsReducer.publications.length
+      this.props.publicationsReducer.loading ||
+      this.props.usersReducer.loading ||
+      !this.props.usersReducer.users.length ||
+      (!this.props.usersReducer.users[this.props.params.key]
+        ? !this.props.usersReducer.users[this.props.params.key].publications
+            .length
+        : 0)
     ) {
       return <Spinner />;
-    } else if (usersReducer.error || publicationsReducer.error) {
+    } else if (
+      this.props.usersReducer.error ||
+      this.props.publicationsReducer.error
+    ) {
       return (
-        <Fatal message={usersReducer.error || publicationsReducer.error} />
+        <Fatal
+          message={
+            this.props.usersReducer.error ||
+            this.props.publicationsReducer.error
+          }
+        />
       );
     } else {
       return (
         <>
-          <h1>{`Publications of ${usersReducer.users[key].name}`}</h1>
-          <List
+          <h1>{`Publications of ${
+            this.props.usersReducer.users[this.props.params.key].name
+          }`}</h1>
+          <PublicationsList
             publications={
-              usersReducer.users[key].publications ||
-              publicationsReducer.publications
+              this.props.usersReducer.users[this.props.params.key].publications || this.props.publicationsReducer.publications
             }
           />
         </>
@@ -59,6 +64,7 @@ class Publications extends Component {
   };
 
   render() {
+    console.log(this.props);
     return <div className="Publications">{this.putPublications()}</div>;
   }
 }

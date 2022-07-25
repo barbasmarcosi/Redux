@@ -34,14 +34,31 @@ export const getPublicationByUserKey = (key) => async (dispatch, getState) => {
   });
   try {
     const { users } = getState().usersReducer;
-    const userId = users[key].id;
-    const response = await axios.get(
+    const userId = Number(key) + 1;
+    const postResponse = await axios.get(
       `http://jsonplaceholder.typicode.com/posts/?userId=${userId}`
     );
+    const commentedPublications = async () => {
+      let commentedPublicationsArray = [];
+      postResponse.data.map(async (publication) => {
+        const commentsResponse = await axios.get(
+          `https://jsonplaceholder.typicode.com/comments?postId=${publication.id}`
+        );
+        commentedPublicationsArray.push(
+          (postResponse.data[key] = {
+            ...publication,
+            state: false,
+            comments: commentsResponse.data,
+          })
+        );
+      });
+      return commentedPublicationsArray;
+    };
+    let updatedPublications = await commentedPublications();
     const updatedUsers = [...users];
     updatedUsers[key] = {
       ...users[key],
-      publications: response.data,
+      publications: updatedPublications,
     };
     dispatch({
       type: GET_ALL_USERS,
@@ -49,7 +66,7 @@ export const getPublicationByUserKey = (key) => async (dispatch, getState) => {
     });
     dispatch({
       type: GET_PUBLICATIONS_BY_KEY,
-      payload: response.data,
+      payload: updatedPublications,
     });
   } catch (err) {
     dispatch({
@@ -57,11 +74,4 @@ export const getPublicationByUserKey = (key) => async (dispatch, getState) => {
       payload: err.message,
     });
   }
-  /*props.publications
-          .filter((publication) => {
-            return publication.userId === props.id;
-          })
-          .map((publication) => {
-            return <li key={publication.id }>{publication.title}</li>;
-          })}*/
 };
