@@ -17,6 +17,7 @@ class Tasks extends Component {
 
   onChangeChecked = (event) => {
     this.props.onChangeCompleted(event.target.value);
+    console.log(event.target.value)
   };
 
   putContent = () => {
@@ -44,7 +45,7 @@ class Tasks extends Component {
                     checked={
                       this.props.tasksReducer.tasks[user.id][key].completed
                     }
-                    value={this.props.tasksReducer.tasks[user.id][key].id}
+                    value={this.props.tasksReducer.tasks[user.id][key].id + ',' + user.id}
                     onChange={this.onChangeChecked}
                   />
                   {this.props.tasksReducer.tasks[user.id][key].title}

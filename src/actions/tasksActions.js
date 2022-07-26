@@ -35,10 +35,10 @@ export const onChangeCompleted = (id) => async (dispatch, getState) => {
   });
   try {
     const tasksRed = getState().tasksReducer;
-    const userId =
-      id % 20 !== 0 ? Math.floor(id / 20) + 1 : Math.floor(id / 20);
-    tasksRed.tasks[userId][id].completed =
-      !tasksRed.tasks[userId][id].completed;
+    const taskId = id.slice(0, id.indexOf(","));
+    const userId = id.slice(id.indexOf(",") + 1, id.length);
+    tasksRed.tasks[userId][taskId].completed =
+      !tasksRed.tasks[userId][taskId].completed;
     dispatch({
       type: GET_ALL_TASKS,
       payload: tasksRed.tasks,
