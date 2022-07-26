@@ -1,9 +1,11 @@
 const Comments = (props) => {
+  console.log(props.comments.state, props.comments)
   return (
     <ul className="Comments">
-      {props.comments.map((comment) => {
-        return <li>{comment.name}</li>;
-      })}
+      {props.state && props.comments
+        .map((comment) => {
+          return <li>{comment.name}</li>;
+        })}
     </ul>
   );
 };

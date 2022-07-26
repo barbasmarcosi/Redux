@@ -9,7 +9,7 @@ const PublicationsList = (props) => {
               <h2>{publication.title}</h2>
               {publication.body}
               {console.log(publication.comments, publication.state)}
-              {publication.state && <Comments comments={publication.comments} />}
+              {<Comments comments={publication.comments} state={publication.state} />}
             </li>
           );
         })}

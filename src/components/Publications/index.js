@@ -17,9 +17,7 @@ class Publications extends Component {
     if (!this.props.usersReducer.users.length) {
       await this.props.getAllUsers();
     }
-    if (
-      !this.props.usersReducer.users[this.props.params.key].publications
-    ) {
+    if (!this.props.usersReducer.users[this.props.params.key].publications) {
       await this.props.getPublicationByUserKey(this.props.params.key);
     }
   }
@@ -29,10 +27,7 @@ class Publications extends Component {
       this.props.publicationsReducer.loading ||
       this.props.usersReducer.loading ||
       !this.props.usersReducer.users.length ||
-      (!this.props.usersReducer.users[this.props.params.key]
-        ? !this.props.usersReducer.users[this.props.params.key].publications
-            .length
-        : 0)
+      !this.props.usersReducer.users[this.props.params.key].publications
     ) {
       return <Spinner />;
     } else if (
@@ -55,7 +50,8 @@ class Publications extends Component {
           }`}</h1>
           <PublicationsList
             publications={
-              this.props.usersReducer.users[this.props.params.key].publications || this.props.publicationsReducer.publications
+              this.props.usersReducer.users[this.props.params.key]
+                .publications || this.props.publicationsReducer.publications
             }
           />
         </>
